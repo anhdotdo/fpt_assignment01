@@ -7,6 +7,5 @@ extern const uint8_t *PROGRAM_MODE;           // extern global variable
 extern const uint8_t *MESSAGE[];
 
 BoolType isValidChar(uint8_t c);                // prototype
-void io_inputChar(uint8_t *c);
 void showMessage(StatusType status);
 void showInstruction();

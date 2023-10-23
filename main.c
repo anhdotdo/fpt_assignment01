@@ -13,13 +13,19 @@ const uint8_t *MESSAGE[] = {"Array empty",
                             };
 
 int main(){
-    uint8_t c;
+    uint8_t input_char;
     int32_t i, k;  
-    StatusType status;           
-    showInstruction();
-    io_inputChar(&c);
-    while(c != 'e'){
-        switch (c)
+    StatusType status;      
+    do{
+        // 1. User input from keyboad
+        showInstruction();
+        scanf("%c", &input_char);
+        while (!isValidChar(input_char))
+        {
+            scanf("%c", &input_char);
+        }
+        // 2. Array management function
+        switch (input_char)
         {
         case 'c':
             printf("Enter length of array: ");
@@ -66,9 +72,7 @@ int main(){
             }
             break;
         }
-        showInstruction();
-        io_inputChar(&c);
-    }
+    }while(input_char != 'e');
     return 0;
 }
 

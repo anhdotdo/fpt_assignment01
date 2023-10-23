@@ -10,14 +10,6 @@ BoolType isValidChar(uint8_t c){
     return false;
 }
 
-void io_inputChar(uint8_t *c){
-    scanf("%c", c);
-    while (!isValidChar(*c))
-    {
-        scanf("%c", c);
-    }
-}
-
 void showMessage(StatusType status){
     printf("%s\n", MESSAGE[status]);
 }
@@ -32,7 +24,7 @@ void showInstruction(){
     printf("x. Sort the array in descending order\n");
     printf("t. Search that x is exist in the array?\n");
     printf("e. Exit the program\n");
-    printf("--------------------------\n");
+    printf("-----------------------\n");
     printf("Which character do you choose?: ");
 }
 
