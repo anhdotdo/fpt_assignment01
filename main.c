@@ -9,23 +9,24 @@ const uint8_t *MESSAGE[] = {"Array empty",
                             "Array success", 
                             "Out of range", 
                             "Data is existent", 
-                            "Data is nonexistent"
+                            "Data is nonexistent",
+                            "Exit"
                             };
 
 int main(){
-    uint8_t input_char;
-    int32_t i, k;  
-    StatusType status;      
+    uint8_t user_input_char;
+    int32_t i, user_input;  
+    StatusType status = ARRAY_SUCCESS;      
     do{
         // 1. User input from keyboad
         showInstruction();
-        scanf("%c", &input_char);
-        while (!isValidChar(input_char))
+        scanf("%c", &user_input_char);
+        while (!isValidChar(user_input_char))
         {
-            scanf("%c", &input_char);
+            scanf("%c", &user_input_char);
         }
         // 2. Array management function
-        switch (input_char)
+        switch (user_input_char)
         {
         case 'c':
             printf("Enter length of array: ");
@@ -44,35 +45,35 @@ int main(){
             break;
         case 'i':
             printf("Enter data: ");
-            scanf("%d", &k);
-            status = array_insert(k);
-            showMessage(status);
+            scanf("%d", &user_input);
+            status = array_insert(user_input);
             break;
         case 'd':
             printf("Enter location k, (k = 1, 2, ...): ");
-            scanf("%d", &k);
-            status = array_delete(k);
-            showMessage(status);
+            scanf("%d", &user_input);
+            status = array_delete(user_input);
             break;
         case 's':
             status = array_sortAsc();
-            showMessage(status);
             break;
         case 'x':
             status = array_sortDesc();
-            showMessage(status);
             break;
         case 't':
             printf("Enter data: ");
-            scanf("%d", &k);
-            status = array_find(k, &i);
-            showMessage(status);
+            scanf("%d", &user_input);
+            status = array_find(user_input, &i);
             if(i != -1){
                 printf("At index: %d\n", i);
             }
             break;
+        default:
+            status = ARRAY_EXIT;
+            break;
         }
-    }while(input_char != 'e');
+        showMessage(status);
+    }while(user_input_char != 'e');
+
     return 0;
 }
 
