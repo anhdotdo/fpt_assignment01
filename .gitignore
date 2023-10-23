@@ -13,5 +13,5 @@
 *.pdb
 
 # Others
-.zip
-.md
+*.zip
+*.md
